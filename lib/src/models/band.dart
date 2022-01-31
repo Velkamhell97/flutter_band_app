@@ -5,11 +5,11 @@ class Band {
 
   const Band({required this.id, required this.name, this.votes = 0});
 
-  factory Band.fromJson(Map<String, dynamic> json) {
+  factory Band.fromSocket(Map<String, dynamic> json) {
     return Band(
-      id: json["id"], 
-      name: json["name"], 
-      votes: json["votes"]
+      id: json["id"] ?? 'no-id', 
+      name: json["name"] ?? 'no-name', 
+      votes: json["votes"] ?? 'no-votes'
     );
   }
 
