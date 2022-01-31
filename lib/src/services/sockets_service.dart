@@ -34,7 +34,7 @@ class SocketsService extends ChangeNotifier {
 
   void _sockets(){
     //-No funciona si se coloca el localhost, se debe usar el ip del pc o el localhost del emulador
-    socket = IO.io('http://10.0.2.2:8080', 
+    socket = IO.io('https://flutter-bands-app.herokuapp.com/', 
       IO.OptionBuilder()
       .setTransports(['websocket']) 
       // .disableAutoConnect() //El autoconnect esta en true por defecto
