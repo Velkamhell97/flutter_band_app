@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
-import 'package:band_name_app/src/pages/home_page.dart';
-import 'package:band_name_app/src/pages/status_page.dart';
-import 'package:band_name_app/src/services/sockets_service.dart';
+import 'src/pages/home_page.dart';
+import 'src/services/sockets_service.dart';
+import 'src/providers/bands_provider.dart';
+import 'src/models/environment.dart';
 
-void main() {
+void main() async {
+  /// Forma 1 de ajustar los dotenv
+  // if(kReleaseMode){
+  //   await dotenv.load(fileName: '.env.production');
+  // }
+  //
+  // if(kDebugMode) {
+  //   await dotenv.load(fileName: '.env.development');
+  // }
+
+  /// Forma de crear variables de entorno para diferentes entorno de desarrollo
+  await dotenv.load(fileName: Environment.getFileName(EnvironmentMode.development));
+
   runApp(const MyApp());
 }
 
@@ -16,7 +30,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => SocketsService())
+        Provider(create: (context) => SocketsService(), lazy: false),
+        ChangeNotifierProvider(create: (context) => BandsProvider()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -27,11 +42,7 @@ class MyApp extends StatelessWidget {
             foregroundColor: Colors.blue
           )
         ),
-        initialRoute: '/home',
-        routes: {
-          '/home'   : (_) => const HomePage(),
-          '/status' : (_) => const StatusPage(),
-        },
+        home: const HomePage(),
       ),
     );
   }
