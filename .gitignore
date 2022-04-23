@@ -1,6 +1,10 @@
 .env.development
 .env.production
 
+server/node_modules
+server/.env
+server/package-lock.json
+
 # Miscellaneous
 *.class
 *.log
