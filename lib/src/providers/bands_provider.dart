@@ -10,17 +10,14 @@ class BandsProvider extends ChangeNotifier {
   /// podemos usar un setter en vez del notifyListener manual
   List<Band> bands = [];
 
-  Map<String, double> bandsMap = {'vacio': 0};
-
   void update(List<Band> bands) {
     this.bands = bands;
 
-    if(bands.isNotEmpty){
-      bandsMap =  {for (Band band in bands) band.name: band.votes.toDouble()};
-    }
-
     /// No importa que se sobre escriba el valor
     loading = false;
+
     notifyListeners();
   }
+
+  Map<String, double> get bandsMap =>  {for (Band band in bands) band.name: band.votes.toDouble()};
 }

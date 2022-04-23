@@ -31,6 +31,8 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  static const Map<String, double> _emptyMap = {'Vacio' : 0};
+
   @override
   void dispose() {
     socket.off('get-bands');
@@ -97,7 +99,9 @@ class _HomePageState extends State<HomePage> {
                 height: size.height * 0.2,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: _BandGraph(bands: bandsProvider.bandsMap,),
+                  child: _BandGraph(
+                    bands: bands.isEmpty ? _emptyMap : bandsProvider.bandsMap
+                  ),
                 )
               ),
               Expanded(

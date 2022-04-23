@@ -1,16 +1,15 @@
-# band_name_app
+# Bands App
 
-A new Flutter project.
+Band votes counter app with sockets and graphs.
 
-## Getting Started
+Includes:
 
-This project is a starting point for a Flutter application.
+* Provider as state management
+* Client Sockets with Dart
+* Server Sockets with Node JS and Express
+* Graphs
+* Environment variables for Production mode and Development Mode
 
-A few resources to get you started if this is your first Flutter project:
+Demo: 
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Bands App](https://res.cloudinary.com/dwzr9lray/image/upload/v1650678207/flutter_repos/Flutter%20Advanced/1.%20Bands%20App/bands_app.gif)
